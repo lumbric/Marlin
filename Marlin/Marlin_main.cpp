@@ -1136,15 +1136,21 @@ static void engage_z_probe() {
 #endif
     }
     #else // Deploy the Z probe by touching the belt, no servo needed.
-    feedrate = homing_feedrate[X_AXIS];
-    destination[X_AXIS] = 35;
-    destination[Y_AXIS] = 72;
-    destination[Z_AXIS] = 100;
+    feedrate = homing_feedrate[X_AXIS];  //MR: activated
+    destination[X_AXIS] = 23;   //MR: changed from 35 (23)
+    destination[Y_AXIS] = 93;   //MR: changed from 72 (93)
+    destination[Z_AXIS] = 20;   //MR: changed from 100 (20)
     prepare_move_raw();
 
     feedrate = homing_feedrate[X_AXIS]/10;
-    destination[X_AXIS] = 0;
+    destination[X_AXIS] = 3;  //MR: changed from 0 (3)
     prepare_move_raw();
+    
+    feedrate = homing_feedrate[X_AXIS];  //MR: added
+    destination[X_AXIS] = 0;   //MR: added
+    destination[Y_AXIS] = 0;   //MR: added
+    prepare_move_raw();        //MR: added
+    
     st_synchronize();
     #endif //SERVO_ENDSTOPS
 }
@@ -1164,26 +1170,26 @@ static void retract_z_probe() {
     }
     #else // Push up the Z probe by moving the end effector, no servo needed.
     feedrate = homing_feedrate[X_AXIS];
-    destination[Z_AXIS] = current_position[Z_AXIS] + 20;
+    destination[Z_AXIS] = current_position[Z_AXIS] + 30;  //MR: changed from 20
     prepare_move_raw();
 
-    destination[X_AXIS] = -46;
-    destination[Y_AXIS] = 59;
-    destination[Z_AXIS] = 28;
+    destination[X_AXIS] = -24;  //MR: changed from -30.9
+    destination[Y_AXIS] = 94;     //MR: changed from 80
+    destination[Z_AXIS] = 46;     //MR: changed from 30
     prepare_move_raw();
 
     // TODO: Move the nozzle down until the Z probe switch is activated.
     //enable_endstops(true);
-    //destination[Z_AXIS] = current_position[Z_AXIS] - 30;
+    //destination[Z_AXIS] = current_position[Z_AXIS] - 17;
     //enable_endstops(false);
 
     // Move the nozzle down further to push the probe into retracted position.
     feedrate = homing_feedrate[Z_AXIS]/10;
-    destination[Z_AXIS] = current_position[Z_AXIS] - 20;
+    destination[Z_AXIS] = current_position[Z_AXIS] - 36.5;  //CHANGE RETRACTION DISTANCE HERE! MR: changed from -16; Change this if the Z-Probe doesn't retract all the way
     prepare_move_raw();
 
     feedrate = homing_feedrate[Z_AXIS];
-    destination[Z_AXIS] = current_position[Z_AXIS] + 30;
+    destination[Z_AXIS] = current_position[Z_AXIS] + 26.0;
     prepare_move_raw();
     st_synchronize();
     #endif //SERVO_ENDSTOPS
@@ -1331,10 +1337,12 @@ static void homeaxis(int axis) {
 #ifdef DELTA
     // retrace by the amount specified in endstop_adj
     if (endstop_adj[axis] * axis_home_dir < 0) {
+      enable_endstops(false);  // Ignore Z probe while moving away from the top microswitch.  MR: added in order to activate M666 for Z Tower, according to https://groups.google.com/forum/#!topic/deltabot/NxrGLASED6c
       plan_set_position(current_position[X_AXIS], current_position[Y_AXIS], current_position[Z_AXIS], current_position[E_AXIS]);
       destination[axis] = endstop_adj[axis];
       plan_buffer_line(destination[X_AXIS], destination[Y_AXIS], destination[Z_AXIS], destination[E_AXIS], feedrate/60, active_extruder);
       st_synchronize();
+      enable_endstops(true);  // Stop ignoring Z probe while moving up to the top microswitch again.  MR: added in order to activate M666 for Z Tower, according to https://groups.google.com/forum/#!topic/deltabot/NxrGLASED6c
     }
 #endif
     axis_is_at_home(axis);
@@ -4151,6 +4159,7 @@ void calculate_delta(float cartesian[3])
 // Adjust print surface height by linear interpolation over the bed_level array.
 void adjust_delta(float cartesian[3])
 {
+
   int half = (AUTO_BED_LEVELING_GRID_POINTS - 1) / 2;
   float grid_x = max(0.001-half, min(half-0.001, cartesian[X_AXIS] / AUTO_BED_LEVELING_GRID_X));
   float grid_y = max(0.001-half, min(half-0.001, cartesian[Y_AXIS] / AUTO_BED_LEVELING_GRID_Y));
@@ -4169,6 +4178,7 @@ void adjust_delta(float cartesian[3])
   delta[X_AXIS] += offset;
   delta[Y_AXIS] += offset;
   delta[Z_AXIS] += offset;
+
 
   /*
   SERIAL_ECHOPGM("grid_x="); SERIAL_ECHO(grid_x);
