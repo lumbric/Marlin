@@ -1175,7 +1175,7 @@ static void retract_z_probe() {
 
     destination[X_AXIS] = -24;  //MR: changed from -30.9
     destination[Y_AXIS] = 94;     //MR: changed from 80
-    destination[Z_AXIS] = 46;     //MR: changed from 30
+    destination[Z_AXIS] = 42;     //PR: changed
     prepare_move_raw();
 
     // TODO: Move the nozzle down until the Z probe switch is activated.
