@@ -14,6 +14,9 @@
 // example_configurations/delta directory.
 //
 
+
+#define CUSTOM_MENDEL_NAME "Rubinstein"
+
 // User-specified version info of this build to display in [Pronterface, etc] terminal window during
 // startup. Implementation of an idea by Prof Braino to inform user that any changes made to this
 // build by the user have been successfully uploaded into firmware.
@@ -399,7 +402,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic o
 //    Probe 3 arbitrary points on the bed (that aren't colinear)
 //    You must specify the X & Y coordinates of all 3 points
 
-  //#define AUTO_BED_LEVELING_GRID
+  #define AUTO_BED_LEVELING_GRID
   // with AUTO_BED_LEVELING_GRID, the bed is sampled in a
   // AUTO_BED_LEVELING_GRID_POINTSxAUTO_BED_LEVELING_GRID_POINTS grid
   // and least squares solution is calculated
@@ -414,7 +417,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic o
     #define FRONT_PROBE_BED_POSITION (10-DELTA_PROBABLE_RADIUS) //MR: Changed from -DELTA_PROBABLE_RADIUS
 
     // probe at the points of a lattice grid
-    #define AUTO_BED_LEVELING_GRID_POINTS 7
+    #define AUTO_BED_LEVELING_GRID_POINTS 4
     #define AUTO_BED_LEVELING_GRID_X ((RIGHT_PROBE_BED_POSITION - LEFT_PROBE_BED_POSITION) / (AUTO_BED_LEVELING_GRID_POINTS - 1))
     #define AUTO_BED_LEVELING_GRID_Y ((BACK_PROBE_BED_POSITION - FRONT_PROBE_BED_POSITION) / (AUTO_BED_LEVELING_GRID_POINTS - 1))
 

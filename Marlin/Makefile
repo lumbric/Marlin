@@ -45,12 +45,14 @@ ARDUINO_INSTALL_DIR  ?= /opt/peter/printer/arduino/1.0.5
 ARDUINO_VERSION      ?= 105
 
 # You can optionally set a path to the avr-gcc tools. Requires a trailing slash. (ex: /usr/local/avr-gcc/bin)
-AVR_TOOLS_PATH ?=
+#AVR_TOOLS_PATH ?= /opt/peter/printer/arduino/1.0.5/hardware/tools/
 
 #Programmer configuration
 UPLOAD_RATE        ?= 115200
-AVRDUDE_PROGRAMMER ?= arduino
-UPLOAD_PORT        ?= /dev/arduino
+AVRDUDE_PROGRAMMER ?= wiring
+AVRDUDE_PATH 	   ?= $(ARDUINO_INSTALL_DIR)/hardware/tools
+#UPLOAD_PORT        ?= /dev/arduino
+UPLOAD_PORT        ?= /dev/ttyUSB0
 
 #Directory used to build files in, contains all the build files, from object files to the final hex file.
 BUILD_DIR          ?= applet
@@ -309,7 +311,7 @@ OBJDUMP = $(AVR_TOOLS_PATH)avr-objdump
 AR  = $(AVR_TOOLS_PATH)avr-ar
 SIZE = $(AVR_TOOLS_PATH)avr-size
 NM = $(AVR_TOOLS_PATH)avr-nm
-AVRDUDE = avrdude
+AVRDUDE = $(AVRDUDE_PATH)/avrdude
 REMOVE = rm -f
 MV = mv -f
 
