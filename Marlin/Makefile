@@ -52,7 +52,7 @@ UPLOAD_RATE        ?= 115200
 AVRDUDE_PROGRAMMER ?= wiring
 AVRDUDE_PATH 	   ?= $(ARDUINO_INSTALL_DIR)/hardware/tools
 #UPLOAD_PORT        ?= /dev/arduino
-UPLOAD_PORT        ?= /dev/ttyUSB0
+UPLOAD_PORT        ?= /dev/ttyUSB?
 
 #Directory used to build files in, contains all the build files, from object files to the final hex file.
 BUILD_DIR          ?= applet
