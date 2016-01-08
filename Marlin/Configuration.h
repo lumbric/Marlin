@@ -417,7 +417,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic o
     #define FRONT_PROBE_BED_POSITION (10-DELTA_PROBABLE_RADIUS) //MR: Changed from -DELTA_PROBABLE_RADIUS
 
     // probe at the points of a lattice grid
-    #define AUTO_BED_LEVELING_GRID_POINTS 4
+    #define AUTO_BED_LEVELING_GRID_POINTS 5
     #define AUTO_BED_LEVELING_GRID_X ((RIGHT_PROBE_BED_POSITION - LEFT_PROBE_BED_POSITION) / (AUTO_BED_LEVELING_GRID_POINTS - 1))
     #define AUTO_BED_LEVELING_GRID_Y ((BACK_PROBE_BED_POSITION - FRONT_PROBE_BED_POSITION) / (AUTO_BED_LEVELING_GRID_POINTS - 1))
 
@@ -505,7 +505,13 @@ const bool Z_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic o
 
 // default settings
 
+// **************************************
+// *** PETRES: CHANGED FOR THE NEW DRIVERS
+// **************************************
 #define DEFAULT_AXIS_STEPS_PER_UNIT   {100, 100, 100, 460}     //MR: Changed from {100, 100, 100, 439}
+// new> #define DEFAULT_AXIS_STEPS_PER_UNIT   {200, 200, 200, 920}     
+// **************************************
+
 #define DEFAULT_MAX_FEEDRATE          {200, 200, 200, 43}      // (mm/sec)  MR: Changed from {200, 200, 200, 200}
 #define DEFAULT_MAX_ACCELERATION      {9000,9000,9000,9000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 
