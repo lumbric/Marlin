@@ -40,8 +40,11 @@
 HARDWARE_MOTHERBOARD ?= 33
 
 # Arduino source install directory, and version number
-# ARDUINO_INSTALL_DIR  ?= /opt/peter/printer/arduino/23
-ARDUINO_INSTALL_DIR  ?= /opt/peter/werkfreiraum/printer/arduino/1.0.5
+# will choose first existing dir:
+ARDUINO_INSTALL_DIRS := /opt/peter/printer/arduino/ /opt/peter/werkfreiraum/printer/arduino/1.0.5 /usr/share/arduino/
+ARDUINO_INSTALL_DIR  := $(firstword $(realpath $(ARDUINO_INSTALL_DIRS)))
+
+# note that seems to be broken with Arduino 1.6.6
 ARDUINO_VERSION      ?= 105
 
 # You can optionally set a path to the avr-gcc tools. Requires a trailing slash. (ex: /usr/local/avr-gcc/bin)
