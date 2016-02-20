@@ -1137,13 +1137,13 @@ static void engage_z_probe() {
     }
     #else // Deploy the Z probe by touching the belt, no servo needed.
     feedrate = homing_feedrate[X_AXIS];  //MR: activated
-    destination[X_AXIS] = 23;   //MR: changed from 35 (23)
-    destination[Y_AXIS] = 93;   //MR: changed from 72 (93)
+    destination[X_AXIS] = 20;   //MR: changed from 35 (23)
+    destination[Y_AXIS] = 76;   //MR: changed from 72 (93)
     destination[Z_AXIS] = 20;   //MR: changed from 100 (20)
     prepare_move_raw();
 
     feedrate = homing_feedrate[X_AXIS]/10;
-    destination[X_AXIS] = 3;  //MR: changed from 0 (3)
+    destination[X_AXIS] = 11;  //MR: changed from 0 (3)
     prepare_move_raw();
     
     feedrate = homing_feedrate[X_AXIS];  //MR: added
@@ -1173,9 +1173,9 @@ static void retract_z_probe() {
     destination[Z_AXIS] = current_position[Z_AXIS] + 30;  //MR: changed from 20
     prepare_move_raw();
 
-    destination[X_AXIS] = -24;  //MR: changed from -30.9
-    destination[Y_AXIS] = 94;     //MR: changed from 80
-    destination[Z_AXIS] = 42;     //PR: changed
+    destination[X_AXIS] = -35;  //MR: changed from -30.9
+    destination[Y_AXIS] = 78;     //MR: changed from 80
+    destination[Z_AXIS] = 33;     //PR: changed
     prepare_move_raw();
 
     // TODO: Move the nozzle down until the Z probe switch is activated.
@@ -1185,7 +1185,7 @@ static void retract_z_probe() {
 
     // Move the nozzle down further to push the probe into retracted position.
     feedrate = homing_feedrate[Z_AXIS]/10;
-    destination[Z_AXIS] = current_position[Z_AXIS] - 36.5;  //CHANGE RETRACTION DISTANCE HERE! MR: changed from -16; Change this if the Z-Probe doesn't retract all the way
+    destination[Z_AXIS] = current_position[Z_AXIS] - 26;  //CHANGE RETRACTION DISTANCE HERE! MR: changed from -16; Change this if the Z-Probe doesn't retract all the way
     prepare_move_raw();
 
     feedrate = homing_feedrate[Z_AXIS];
