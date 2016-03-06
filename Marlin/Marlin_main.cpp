@@ -1138,12 +1138,12 @@ static void engage_z_probe() {
     #else // Deploy the Z probe by touching the belt, no servo needed.
     feedrate = homing_feedrate[X_AXIS];  //MR: activated
     destination[X_AXIS] = 20;   //MR: changed from 35 (23)
-    destination[Y_AXIS] = 76;   //MR: changed from 72 (93)
+    destination[Y_AXIS] = 78;   //MR: changed from 72 (93)
     destination[Z_AXIS] = 20;   //MR: changed from 100 (20)
     prepare_move_raw();
 
     feedrate = homing_feedrate[X_AXIS]/10;
-    destination[X_AXIS] = 11;  //MR: changed from 0 (3)
+    destination[X_AXIS] = 10;  //MR: changed from 0 (3)
     prepare_move_raw();
     
     feedrate = homing_feedrate[X_AXIS];  //MR: added
