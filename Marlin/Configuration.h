@@ -444,7 +444,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic o
   // these are the offsets to the probe relative to the extruder tip (Hotend - Probe)
   #define X_PROBE_OFFSET_FROM_EXTRUDER 0.0   //MR: Changed from 3.5
   #define Y_PROBE_OFFSET_FROM_EXTRUDER 16    //MR: Changed from 17
-  #define Z_PROBE_OFFSET_FROM_EXTRUDER -5.30  //MR: CHANGE Z-PROBE OFFSET HERE! The higher Z, the closer the head is to the printbed
+  #define Z_PROBE_OFFSET_FROM_EXTRUDER -5.40  //MR: CHANGE Z-PROBE OFFSET HERE! The higher Z, the closer the head is to the printbed
 
   #define Z_RAISE_BEFORE_HOMING 4       // (in mm) Raise Z before homing (G28) for Probe Clearance.
                                         // Be sure you have this distance over your Z_MAX_POS in case
@@ -495,7 +495,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic o
 #define MANUAL_X_HOME_POS 0
 #define MANUAL_Y_HOME_POS 0
 //CALIB
-#define MANUAL_Z_HOME_POS 261.5  // CHANGE HEIGHT OF PRINTER HERE! For delta: Distance between nozzle and print surface after homing.
+#define MANUAL_Z_HOME_POS 260.5  // CHANGE HEIGHT OF PRINTER HERE! For delta: Distance between nozzle and print surface after homing.
 
 //// MOVEMENT SETTINGS
 #define NUM_AXIS 4 // The axis order in all axis related arrays is X, Y, Z, E
