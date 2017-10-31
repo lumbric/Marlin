@@ -142,7 +142,7 @@
 // 147 is Pt100 with 4k7 pullup
 // 110 is Pt100 with 1k pullup (non standard)
 
-#define TEMP_SENSOR_0 5
+#define TEMP_SENSOR_0 11
 #define TEMP_SENSOR_1 0
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_BED 1
@@ -495,7 +495,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic o
 #define MANUAL_X_HOME_POS 0
 #define MANUAL_Y_HOME_POS 0
 //CALIB
-#define MANUAL_Z_HOME_POS 260.5  // CHANGE HEIGHT OF PRINTER HERE! For delta: Distance between nozzle and print surface after homing.
+#define MANUAL_Z_HOME_POS 264.4  // CHANGE HEIGHT OF PRINTER HERE! For delta: Distance between nozzle and print surface after homing.
 
 //// MOVEMENT SETTINGS
 #define NUM_AXIS 4 // The axis order in all axis related arrays is X, Y, Z, E
