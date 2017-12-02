@@ -589,7 +589,10 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4]]]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 80, 760*1.1 }  // default steps per unit for Kossel (GT2, 20 tooth)
+// Petres: changed fro the new stepper drivers:
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {100, 100, 100, 460}     //MR: Changed from {100, 100, 100, 439}
+// old stepper drivers:
+// #define DEFAULT_AXIS_STEPS_PER_UNIT   {200, 200, 200, 920}
 
 /**
  * Default Max Feed Rate (mm/s)
