@@ -76,8 +76,8 @@
 // build by the user have been successfully uploaded into firmware.
 #define STRING_CONFIG_H_AUTHOR "(rubinstein, Kossel Mini)" // Who made the changes.
 #define SHOW_BOOTSCREEN
-#define STRING_SPLASH_LINE1 Hello!             // will be shown during bootup in line 1
-#define STRING_SPLASH_LINE2 rubinstein         // will be shown during bootup in line 2
+#define STRING_SPLASH_LINE1 "Hello world."       // will be shown during bootup in line 1
+#define STRING_SPLASH_LINE2 "rubinstein"         // will be shown during bootup in line 2
 
 //
 // *** VENDORS PLEASE READ *****************************************************
