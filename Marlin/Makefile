@@ -519,7 +519,7 @@ extcoff: $(TARGET).elf
 	# Link: create ELF output file from library.
 $(BUILD_DIR)/$(TARGET).elf: $(OBJ) Configuration.h
 	$(Pecho) "  CXX   $@"
-	$P $(CC) $(LD_PREFIX) $(ALL_CXXFLAGS) -Wl,--gc-sections,--relax -o $@ -L. $(OBJ) $(LDFLAGS) $(LD_SUFFIX)
+	$P $(CC) $(LD_PREFIX) $(ALL_CXXFLAGS) -Wl,--gc-sections,--relax -o $@ -L. $(OBJ) $(LDFLAGS) $(LD_SUFFIX) -L/opt/arduino-1.8.5/hardware/tools/avr/avr/lib/avr6 -latmega2560
 
 $(BUILD_DIR)/%.o: %.c Configuration.h Configuration_adv.h $(MAKEFILE)
 	$(Pecho) "  CC    $<"
