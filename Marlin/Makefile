@@ -66,7 +66,7 @@ ARDUINO_INSTALL_DIR  := $(firstword $(realpath $(ARDUINO_INSTALL_DIRS)))
 ARDUINO_VERSION      ?= 185
 
 # You can optionally set a path to the avr-gcc tools. Requires a trailing slash. (ex: /usr/local/avr-gcc/bin)
-AVR_TOOLS_PATH ?=
+AVR_TOOLS_PATH ?= /opt/arduino-1.8.5/hardware/tools/avr/bin/
 
 #Programmer configuration
 UPLOAD_RATE        ?= 115200
