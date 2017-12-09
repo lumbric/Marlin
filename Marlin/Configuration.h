@@ -758,17 +758,17 @@
  *    (0,0)
  */
 #define X_PROBE_OFFSET_FROM_EXTRUDER 0     // X offset: -left  +right  [of the nozzle]
-#define Y_PROBE_OFFSET_FROM_EXTRUDER -10   // Y offset: -front +behind [the nozzle]
-#define Z_PROBE_OFFSET_FROM_EXTRUDER -3.5  // Z offset: -below +above  [the nozzle]
+#define Y_PROBE_OFFSET_FROM_EXTRUDER 25    // Y offset: -front +behind [the nozzle]
+#define Z_PROBE_OFFSET_FROM_EXTRUDER -5.4  // Z offset: -below +above  [the nozzle]
 
 // X and Y axis travel speed (mm/m) between probes
-#define XY_PROBE_SPEED 4000
+#define XY_PROBE_SPEED 3000
 
 // Speed for the first approach when double-probing (with PROBE_DOUBLE_TOUCH)
 #define Z_PROBE_SPEED_FAST HOMING_FEEDRATE_Z
 
 // Speed for the "accurate" probe of each point
-#define Z_PROBE_SPEED_SLOW (Z_PROBE_SPEED_FAST / 2)
+#define Z_PROBE_SPEED_SLOW (Z_PROBE_SPEED_FAST / 4)
 
 // Use double touch for probing
 //#define PROBE_DOUBLE_TOUCH
@@ -784,13 +784,13 @@
   // if servo actuated touch probe is not defined. Uncomment as appropriate for your printer/probe.
 
   // Kossel Mini
-  #define Z_PROBE_ALLEN_KEY_DEPLOY_1_X 30.0
-  #define Z_PROBE_ALLEN_KEY_DEPLOY_1_Y DELTA_PRINTABLE_RADIUS
+  #define Z_PROBE_ALLEN_KEY_DEPLOY_1_X 20.0
+  #define Z_PROBE_ALLEN_KEY_DEPLOY_1_Y 80.0
   #define Z_PROBE_ALLEN_KEY_DEPLOY_1_Z 100.0
   #define Z_PROBE_ALLEN_KEY_DEPLOY_1_FEEDRATE XY_PROBE_SPEED
 
-  #define Z_PROBE_ALLEN_KEY_DEPLOY_2_X 0.0
-  #define Z_PROBE_ALLEN_KEY_DEPLOY_2_Y DELTA_PRINTABLE_RADIUS
+  #define Z_PROBE_ALLEN_KEY_DEPLOY_2_X 8.0
+  #define Z_PROBE_ALLEN_KEY_DEPLOY_2_Y 80.0
   #define Z_PROBE_ALLEN_KEY_DEPLOY_2_Z 100.0
   #define Z_PROBE_ALLEN_KEY_DEPLOY_2_FEEDRATE (XY_PROBE_SPEED/10)
 
@@ -801,9 +801,9 @@
 
   #define Z_PROBE_ALLEN_KEY_STOW_DEPTH 20
   // Move the probe into position
-  #define Z_PROBE_ALLEN_KEY_STOW_1_X -64.0
-  #define Z_PROBE_ALLEN_KEY_STOW_1_Y 56.0
-  #define Z_PROBE_ALLEN_KEY_STOW_1_Z 23.0
+  #define Z_PROBE_ALLEN_KEY_STOW_1_X -33.0
+  #define Z_PROBE_ALLEN_KEY_STOW_1_Y 85.5
+  #define Z_PROBE_ALLEN_KEY_STOW_1_Z 25.0
   #define Z_PROBE_ALLEN_KEY_STOW_1_FEEDRATE XY_PROBE_SPEED
   // Move the nozzle down further to push the probe into retracted position.
   #define Z_PROBE_ALLEN_KEY_STOW_2_X  Z_PROBE_ALLEN_KEY_STOW_1_X
@@ -837,8 +837,8 @@
  * Example: `M851 Z-5` with a CLEARANCE of 4  =>  9mm from bed to nozzle.
  *     But: `M851 Z+1` with a CLEARANCE of 2  =>  2mm from bed to nozzle.
  */
-#define Z_CLEARANCE_DEPLOY_PROBE   50 // Z Clearance for Deploy/Stow
-#define Z_CLEARANCE_BETWEEN_PROBES  5 // Z Clearance between probe points
+#define Z_CLEARANCE_DEPLOY_PROBE   50   // Z Clearance for Deploy/Stow
+#define Z_CLEARANCE_BETWEEN_PROBES  15  // Z Clearance between probe points
 
 // For M851 give a range for adjusting the Z probe offset
 #define Z_PROBE_OFFSET_RANGE_MIN -20
