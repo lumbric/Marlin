@@ -1004,7 +1004,7 @@
 
   // Set the number of grid points per dimension.
   // Works best with 5 or more points in each dimension.
-  #define GRID_MAX_POINTS_X 4
+  #define GRID_MAX_POINTS_X 5
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   #define LEFT_PROBE_BED_POSITION -(DELTA_PROBEABLE_RADIUS)
