@@ -1044,8 +1044,8 @@
   #define ABL_PROBE_PT_1_Y 40
   #define ABL_PROBE_PT_2_X 70
   #define ABL_PROBE_PT_2_Y 10
-  #define ABL_PROBE_PT_3_X -20
-  #define ABL_PROBE_PT_3_Y -80
+  #define ABL_PROBE_PT_3_X 0
+  #define ABL_PROBE_PT_3_Y -60
 
 #elif ENABLED(AUTO_BED_LEVELING_UBL)
 
