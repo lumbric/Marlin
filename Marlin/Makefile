@@ -55,22 +55,25 @@
 # Or, try disconnecting USB to power down and then reconnecting before running avrdude.
 #
 
-# This defines the board to compile for (see boards.h for your board's ID)
-HARDWARE_MOTHERBOARD ?= 11
+# This defined the board you are compiling for (see Configuration.h for the options)
+HARDWARE_MOTHERBOARD ?= 33
 
 # Arduino source install directory, and version number
 # On most linuxes this will be /usr/share/arduino
-ARDUINO_INSTALL_DIR  ?= ${HOME}/Arduino
-ARDUINO_VERSION      ?= 106
+# will choose first existing dir:
+ARDUINO_INSTALL_DIRS := /opt/arduino-1.8.5 /opt/arduino /opt/peter/printer/arduino/ /opt/peter/werkfreiraum/printer/arduino/1.0.5 /usr/share/arduino/
+ARDUINO_INSTALL_DIR  := $(firstword $(realpath $(ARDUINO_INSTALL_DIRS)))
+ARDUINO_VERSION      ?= 185
 
 # You can optionally set a path to the avr-gcc tools. Requires a trailing slash. (ex: /usr/local/avr-gcc/bin)
-AVR_TOOLS_PATH ?=
+AVR_TOOLS_PATH ?= $(ARDUINO_INSTALL_DIR)/hardware/tools/avr/bin/
 
 #Programmer configuration
-UPLOAD_RATE        ?= 57600
-AVRDUDE_PROGRAMMER ?= arduino
-# on most linuxes this will be /dev/ttyACM0 or /dev/ttyACM1
-UPLOAD_PORT        ?= /dev/ttyUSB0
+UPLOAD_RATE        ?= 115200
+AVRDUDE_PROGRAMMER ?= wiring
+AVRDUDE_PATH 	   ?= $(ARDUINO_INSTALL_DIR)/hardware/tools
+#UPLOAD_PORT        ?= /dev/arduino
+UPLOAD_PORT        ?= $(wildcard /dev/ttyUSB?)
 
 #Directory used to build files in, contains all the build files, from object files to the final hex file
 #on linux it is best to put an absolute path like /home/username/tmp .
@@ -83,7 +86,8 @@ LIQUID_TWI2        ?= 0
 WIRE               ?= 0
 
 # this defines if U8GLIB is needed (may require RELOC_WORKAROUND)
-U8GLIB             ?= 1
+# Petreg: no idea what this is, but if enabled building fails
+U8GLIB             ?= 0
 
 # this defines whether to add a workaround for the avr-gcc relocation bug
 #	  https://www.stix.id.au/wiki/AVR_relocation_truncations_workaround
@@ -310,7 +314,8 @@ CXXSRC = WMath.cpp WString.cpp Print.cpp Marlin_main.cpp \
 	temperature.cpp cardreader.cpp configuration_store.cpp \
 	watchdog.cpp SPI.cpp servo.cpp Tone.cpp ultralcd.cpp digipot_mcp4451.cpp \
 	dac_mcp4728.cpp vector_3.cpp least_squares_fit.cpp endstops.cpp stopwatch.cpp utility.cpp \
-	printcounter.cpp nozzle.cpp serial.cpp gcode.cpp Max7219_Debug_LEDs.cpp
+	printcounter.cpp nozzle.cpp serial.cpp gcode.cpp Max7219_Debug_LEDs.cpp ubl.cpp \
+	ubl_G29.cpp ubl_motion.cpp G26_Mesh_Validation_Tool.cpp hex_print_routines.cpp
 ifeq ($(NEOPIXEL), 1)
 CXXSRC += Adafruit_NeoPixel.cpp
 endif
@@ -407,7 +412,9 @@ LDFLAGS = -lm
 AVRDUDE_PORT = $(UPLOAD_PORT)
 AVRDUDE_WRITE_FLASH = -Uflash:w:$(BUILD_DIR)/$(TARGET).hex:i
 ifeq ($(shell uname -s), Linux)
-AVRDUDE_CONF = /etc/avrdude/avrdude.conf
+#AVRDUDE_CONF = /etc/avrdude/avrdude.conf
+# petreg: seems as we have a linux without this file...
+AVRDUDE_CONF = $(ARDUINO_INSTALL_DIR)/hardware/tools/avr/etc/avrdude.conf
 else
 AVRDUDE_CONF = $(ARDUINO_INSTALL_DIR)/hardware/tools/avr/etc/avrdude.conf
 endif
