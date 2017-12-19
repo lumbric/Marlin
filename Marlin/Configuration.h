@@ -1023,7 +1023,7 @@
   //#define ENABLE_LEVELING_FADE_HEIGHT
 
   // Set the boundaries for probing (where the probe can reach).
-  #define DELTA_PROBEABLE_RADIUS 70
+  #define DELTA_PROBEABLE_RADIUS 50
 
 
   // For Cartesian machines, instead of dividing moves on mesh boundaries,
