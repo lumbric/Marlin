@@ -423,8 +423,9 @@
 
 // This option prevents a single extrusion longer than EXTRUDE_MAXLENGTH.
 // Note that for Bowden Extruders a too-small value here may prevent loading.
+// This is a lot to be able to retract/extrude one bowden length
 #define PREVENT_LENGTHY_EXTRUDE
-#define EXTRUDE_MAXLENGTH 200
+#define EXTRUDE_MAXLENGTH 1200
 
 //===========================================================================
 //======================== Thermal Runaway Protection =======================
