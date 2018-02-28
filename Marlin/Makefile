@@ -73,7 +73,7 @@ UPLOAD_RATE        ?= 115200
 AVRDUDE_PROGRAMMER ?= wiring
 AVRDUDE_PATH 	   ?= $(ARDUINO_INSTALL_DIR)/hardware/tools
 #UPLOAD_PORT        ?= /dev/arduino
-UPLOAD_PORT        ?= $(wildcard /dev/ttyUSB?)
+UPLOAD_PORT        ?= $(wildcard /dev/ttyACM?)
 
 #Directory used to build files in, contains all the build files, from object files to the final hex file
 #on linux it is best to put an absolute path like /home/username/tmp .
