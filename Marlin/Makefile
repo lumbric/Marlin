@@ -86,8 +86,7 @@ LIQUID_TWI2        ?= 0
 WIRE               ?= 0
 
 # this defines if U8GLIB is needed (may require RELOC_WORKAROUND)
-# Petreg: no idea what this is, but if enabled building fails
-U8GLIB             ?= 0
+U8GLIB             ?= 1
 
 # this defines whether to add a workaround for the avr-gcc relocation bug
 #	  https://www.stix.id.au/wiki/AVR_relocation_truncations_workaround
@@ -285,8 +284,8 @@ ifeq ($(NEOPIXEL), 1)
 VPATH += $(ARDUINO_INSTALL_DIR)/libraries/Adafruit_NeoPixel
 endif
 ifeq ($(U8GLIB), 1)
-VPATH += $(ARDUINO_INSTALL_DIR)/libraries/U8glib
-VPATH += $(ARDUINO_INSTALL_DIR)/libraries/U8glib/utility
+VPATH += ../U8glib
+VPATH += ../U8glib/utility
 endif
 
 ifeq ($(HARDWARE_VARIANT), arduino)
@@ -326,7 +325,7 @@ CXXSRC += Wire.cpp
 endif
 
 ifeq ($(U8GLIB), 1)
-SRC += u8g_ll_api.c u8g_bitmap.c u8g_clip.c u8g_com_null.c u8g_delay.c u8g_page.c u8g_pb.c u8g_pb16h1.c u8g_rect.c u8g_state.c u8g_font.c u8g_font_data.c
+SRC += u8g_pb32h1.c u8g_ll_api.c u8g_bitmap.c u8g_clip.c u8g_com_null.c u8g_delay.c u8g_page.c u8g_pb.c u8g_pb16h1.c u8g_rect.c u8g_state.c u8g_font.c u8g_font_data.c
 endif
 
 ifeq ($(RELOC_WORKAROUND), 1)
